@@ -1,0 +1,43 @@
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    paths:
+      - ./**.yaml
+      - ./**.yml
+name: Cluster Capacity Check
+jobs:
+  check_capacity:
+    runs-on: ubuntu-latest
+    name: Check capacity 
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Detect PR changes
+        uses: fabidick22/detect-changes-action@v1.0.1
+
+
+#      - name: Read new requested resources from YAML.
+#        id: yaml-data
+#        uses: jbutcher5/read-yaml@1.6
+#        with:
+#          file: './**.yml'          # File to read from
+#          key-path: '["runs", "using"]' # Access the runs key then the using key and retuns the value.
+#
+#      - name: Display read-yaml output
+#        run: echo "${{ steps.yaml-data.outputs.data }}"
+        
+    
+    
+#spec.source.helm.values.resources.limits.cpu
+#spec.source.helm.values.resources.limits.memory
+#spec.source.helm.values.resources.requests.cpu
+#spec.source.helm.values.resources.requests.memory
+    
