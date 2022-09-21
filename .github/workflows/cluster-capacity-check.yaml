@@ -40,7 +40,7 @@ jobs:
         uses: jbutcher5/read-yaml@1.6
         with:
           file: '${{ steps.changed-files-specific.outputs.all_modified_files }}'  # File to read from
-          key-path: '["limits", "cpu"]' # Access the runs key then the using key and retuns the value.
+          key-path: '["spec", "source", "helm", "values", "resources", "limits", "cpu"]' # Access the runs key then the using key and retuns the value.
 
       - name: Display read-yaml output
         run: echo "${{ steps.yaml-data.outputs.data }}"
