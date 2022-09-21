@@ -20,11 +20,11 @@ spec:
 
         resources:
           limits:
-            cpu: '2'
-            memory: 2Gi
+            cpu: '4'
+            memory: 4Gi
           requests:
-            cpu: 500m
-            memory: 1Gi
+            cpu: 1000m
+            memory: 2Gi
 
   destination:
     name: sbx-app1.lab1
