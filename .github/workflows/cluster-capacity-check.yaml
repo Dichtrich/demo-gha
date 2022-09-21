@@ -23,6 +23,11 @@ jobs:
       
       - name: Detect PR changes
         uses: fabidick22/detect-changes-action@v1.0.1
+        with: 
+          path: 
+            - ./**.yml
+            - ./**.yaml
+          token: ${{ secrets.ACTIONS_TOKEN }}
 
 
 #      - name: Read new requested resources from YAML.
