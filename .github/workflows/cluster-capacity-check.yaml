@@ -32,10 +32,6 @@ jobs:
           files: |
             *.yml
             *.yaml
-        run: |
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
-            echo "$file was added"
-          done
 
 
 #      - name: Read new requested resources from YAML.
