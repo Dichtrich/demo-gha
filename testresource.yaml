@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: logicmonitor-logstash-forwarder-sbx
+  labels:
+    bandwidth.com/clusterName: sbx-app1.lab1
+    bandwidth.com/owner: netops-observability
+spec:
+  project: netops-observability
+  source:
+    chart: logicmonitor-logstash-forwarder
+    repoURL: https://bandwidth.jfrog.io/artifactory/helm-snapshot
+    targetRevision: 0.0.4-9d68
+    helm:
+      values: |-
+        replicas:
+          syslog: 4
+
+        portal: bandwidthsandbox
+
+        resources:
+          limits:
+            cpu: '2'
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+
+  destination:
+    name: sbx-app1.lab1
+    namespace: netops-observability
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
