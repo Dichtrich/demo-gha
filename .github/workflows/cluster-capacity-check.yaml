@@ -17,14 +17,13 @@ jobs:
     name: Check capacity 
     steps:
       - name: git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       
-      - name: Detect PR changes
-        uses: fabidick22/detect-changes-action@v1.0.1
-        with: 
-          token: ${{ secrets.ACTIONS_TOKEN }}
+      - name: Get changed files using defaults
+        id: changed-files
+        uses: tj-actions/changed-files@v29
 
 
 #      - name: Read new requested resources from YAML.
